@@ -1,5 +1,5 @@
 # OwnerShip
-In rust memory is managed through a system of ownership with a set of rulesthat the compiler checks at compile time. None of the ownership features slow down  the program while it is running.
+In rust memory is managed through a system of ownership with a set of rules that the compiler checks at compile time. None of the ownership features slow down  the program while it is running.
 
 # The stack and the heap
 
@@ -38,7 +38,7 @@ println!("{}", s);
 
 # Memory and Allocation
 
-With the String type, in order to supporet a mutable, growable piece of text, it is necessary to allocate  an amount of memory on the heap, unknown at compile time, to hold the contents:
+With the String type, in order to support a mutable, growable piece of text, it is necessary to allocate  an amount of memory on the heap, unknown at compile time, to hold the contents:
 -> The memory must be requested from the memory allocator at runtime.
 -> There needs to be a way of returning the memory once it has finished its purpose.
 
@@ -61,7 +61,7 @@ println!("s1 = {}, s2 = {}");
 
 
 # copy
-Rust hash a spcieal annotation called the copy trait that the the programmer can place on types like integers that are stored on the stack. If a type implements the Copy trait, an older variable is till usable after assignment.  Rust won't let the user annotate a type with the copy trait if the type, or any of its parts, has implemented the Drop trait. If the type needs something special to happen when the value goes out of scope and the Copy annotation is added to the type, a compile-time error is generated. 
+Rust has a special annotation called the copy trait that the the programmer can place on types like integers that are stored on the stack. If a type implements the Copy trait, an older variable is till usable after assignment.  Rust won't let the user annotate a type with the copy trait if the type, or any of its parts, has implemented the Drop trait. If the type needs something special to happen when the value goes out of scope and the Copy annotation is added to the type, a compile-time error is generated. 
 Any group op simple scalar values can implement copy, and nothing that requires allocation or is some form of resource can implement Copy.
 
 Types that implement copy:
