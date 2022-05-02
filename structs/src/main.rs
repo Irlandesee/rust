@@ -4,10 +4,40 @@ struct User {
     email: String,
     sign_in_count: u64,
 }
+#[derive(Debug)]
+struct Rectangle{
+    width: u32,
+    height: u32,
+}
 
 struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 struct AlwaysEqual;
+
+impl Rectangle{ //everything within the impl block is associated with Rectangle
+    fn area(&self) -> u32{
+            self.width * self.height
+    }
+    fn can_hold(&self, other: &Rectangle) -> bool{
+        self.width > other.width && self.height > other.height
+    }
+    //
+    //  All functions within an impl block are called 
+    //  associated functions because they're associated with
+    //  the type named after the impl.
+    //
+    //  Associated functions that aren't methods are often used
+    //  for constructors that will return a new instance of the 
+    //  struct.
+
+    fn square(size: u32) -> Rectangle{
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+
+}
 
 fn main(){
     let user = User {
@@ -49,6 +79,15 @@ fn main(){
     //lifetimes -> Lifetimes ensure that the data referenced
     //by a struct is valid for as long as the struct is.
 
+    let rect = Rectangle{
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect: {:?}", rect);
+    println!("The area of the rectangle is {}", rect.area());
+    let sq = Rectangle::square(3);
+     
 }
 
 /**
@@ -61,4 +100,9 @@ fn build_user(email: String, username: String) -> User{
         active: true,
         sign_in_count: 1,
     }
+}
+
+
+fn areaFunction(rectangle: &Rectangle) -> u32{
+    rectangle.width * rectangle.height
 }
